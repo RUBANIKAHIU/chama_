@@ -14,7 +14,6 @@ from rest_framework.decorators import action
 
 #importing my models
 from .models import Profile 
-from .models import Login
 
 
 class DummySerializer(serializers.Serializer):
@@ -28,6 +27,8 @@ class chamaviewset(viewsets.ModelViewSet):
 # Render signup.html
     @action(detail=False, methods= ['get','post'])
     def signup(self,request):
+        if request.method == 'POST':
+            print('am here')
         return render(request, 'signup.html')
     
 #Render login.html

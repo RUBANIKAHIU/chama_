@@ -18,11 +18,3 @@ class Profile (models.Model):
 
     def __str__(self):
         return self.first_name
-
-class Login (models.Model):   
-    user=models.OneToOneField(User,  default=1 ,on_delete=models.CASCADE)
-    profile_user_id=models.AutoField(primary_key=True, default=1 ,blank=False,null=False)
-    phone_number=models.IntegerField(unique=True,blank=False)
-
-    def __str__(self):
-        return self.phone_number
