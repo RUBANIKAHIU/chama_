@@ -1,0 +1,131 @@
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    box-sizing: border-box;
+}
+
+.dashboard {
+    background-color: #3498db;
+    color: #fff;
+    padding: 10px 20px;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.container {
+    display: flex;
+    margin: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    border-radius: 8px;
+    background-color: #fff;
+}
+
+.sidebar {
+    width: 250px;
+    height: 100vh;
+    background-color: #34495e;
+    padding-top: 20px;
+    color: #fff;
+}
+
+.main-bar {
+    flex: 1;
+    padding: 20px;
+}
+
+.sidebar-heading,
+.main-bar-heading {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #000000;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+nav ul li {
+    margin-bottom: 10px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+    display: block;
+    padding: 10px;
+    border-radius: 3px;
+    transition: background-color 0.3s;
+    font-size: 16px;
+    position: relative;
+}
+
+nav ul li:hover {
+    padding-left: 5px; /* Increase indentation on hover */
+}
+
+nav ul li a:hover {
+    background-color: #2c3e50;
+}
+
+.submenu-btn {
+    background-color: #34495e;
+    color: #fff;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    margin-bottom: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 16px;
+    position: relative;
+}
+
+.submenu-btn::after {
+    content: '►';
+    margin-left: 5px;
+}
+
+.submenu {
+    display: none;
+    padding-left: 15px;
+    list-style-type: circle; /* Circular bullets for sub-menu */
+    font-size: 14px; /* Decrease font size for sub-menu */
+}
+
+.submenu a {
+    font-size: 14px;
+    font-weight: normal; /* Not bold for sub-menu items */
+}
+
+.submenu-btn.active::after {
+    content: '▼'; /* Change arrow on active state */
+}
+
+.submenu-btn.active + .submenu {
+    margin-left: 15px; /* Increase indentation when submenu is active */
+}
+
+.submenu .submenu-btn::after {
+    content: '►'; /* Reset arrow for sub-sub-menu */
+}
+
+.submenu .submenu {
+    list-style-type: square; /* Square bullets for sub-sub-menu */
+    font-size: 12px; /* Decrease font size for sub-sub-menu */
+}
+
+.submenu .submenu-btn.active::after {
+    content: '▼'; /* Change arrow on active state for sub-sub-menu */
+}
+
+.submenu .submenu-btn.active + .submenu {
+    margin-left: 15px; /* Increase indentation for sub-sub-menu */
+}

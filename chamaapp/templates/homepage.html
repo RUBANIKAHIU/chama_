@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../static/homepage.css" />
+    <title>chama_homepage</title>
+  </head>
+  <body>
+    <div class="dashboard">
+      <h1>Chama Dashboard</h1>
+    </div>
+    <div class="container">
+      
+      <nav class="sidebar">
+        <div class="sidebar-heading">Sidebar Menu</div>
+        <ul>
+          <li>
+            <button
+              class="submenu-btn"
+              onclick="toggleSubMenu('overviewSubMenu')"
+              id="overviewSubMenuBtn"
+            >
+              Overview
+            </button>
+            <ul class="submenu" id="overviewSubMenu">
+              <li><a href="#">Total Funds</a></li>
+              <li><a href="#">Transactions</a></li>
+              <li><a href="#">Upcoming Events</a></li>
+            </ul>
+          </li>
+          <li>
+            <button
+              class="submenu-btn"
+              onclick="toggleSubMenu('memberManagementSubMenu')"
+              id="memberManagementSubMenuBtn"
+            >
+              Member Management
+            </button>
+            <ul class="submenu" id="memberManagementSubMenu">
+              <li>
+                <button
+                  class="submenu-btn"
+                  onclick="toggleSubMenu('manageMembersSubMenu')"
+                  id="manageMembersSubMenuBtn"
+                >
+                  Manage Members
+                </button>
+                <ul class="submenu" id="manageMembersSubMenu">
+                  <li><a href="#">Add Member</a></li>
+                  <li><a href="#">Update Member</a></li>
+                  <li><a href="#">Remove Members</a></li>
+                </ul>
+              </li>
+              <li><a href="#">List Of Members</a></li>
+            </ul>
+          </li>
+          <li>
+            <button
+              class="submenu-btn"
+              onclick="toggleSubMenu('meetingScheduleSubMenu')"
+              id="meetingScheduleSubMenuBtn"
+            >
+              Meeting Schedule
+            </button>
+            <ul class="submenu" id="meetingScheduleSubMenu">
+              <li><a href="#">Calendar (Chama Meetings)</a></li>
+              <li><a href="#">Mark Attendance</a></li>
+            </ul>
+          </li>
+          <li>
+            <button
+              class="submenu-btn"
+              onclick="toggleSubMenu('communicationHubSubMenu')"
+              id="communicationHubSubMenuBtn"
+            >
+              Communication Hub
+            </button>
+            <ul class="submenu" id="communicationHubSubMenu">
+              <li><a href="#">Latest Announcements</a></li>
+              <li><a href="#">Ask Questions</a></li>
+            </ul>
+          </li>
+          <li>
+            <button
+              class="submenu-btn"
+              onclick="toggleSubMenu('financialOverviewSubMenu')"
+              id="financialOverviewSubMenuBtn"
+            >
+              Financial Overview
+            </button>
+            <ul class="submenu" id="financialOverviewSubMenu">
+              <li><a href="#">Outstanding Loans</a></li>
+              <li><a href="#">Upcoming Expenses</a></li>
+              <li><a href="#">Financial Report</a></li>
+            </ul>
+          </li>
+          <li>
+            <button
+              class="submenu-btn"
+              onclick="toggleSubMenu('taskManagementSubMenu')"
+              id="taskManagementSubMenuBtn"
+            >
+              Task Management
+            </button>
+            <ul class="submenu" id="taskManagementSubMenu">
+              <li><a href="#">Assign Task</a></li>
+              <li><a href="#">Track Progress</a></li>
+            </ul>
+          </li>
+          <li><a href="#">Payment Status</a></li>
+          <li><a href="#">User Settings</a></li>
+          <li><a href="#">Logout</a></li>
+        </ul>
+      </nav>
+
+
+      <div class="main-bar">
+        <div class="main-bar-heading">Main Content Area</div>
+      </div>
+    </div>
+    <script>
+      function toggleSubMenu(subMenuId) {
+        var submenu = document.getElementById(subMenuId);
+        var submenuBtn = document.querySelector(`#${subMenuId}Btn`);
+        var allSubmenus = document.querySelectorAll(".submenu");
+        var allSubmenuBtns = document.querySelectorAll(".submenu-btn");
+
+        // Close all other submenus and remove 'active' class from their buttons
+        allSubmenus.forEach((item) => {
+          if (item.id !== subMenuId && !item.contains(submenuBtn)) {
+            item.style.display = "none";
+          }
+        });
+
+        allSubmenuBtns.forEach((item) => {
+          if (item.id !== `${subMenuId}Btn`) {
+            item.classList.remove("active");
+          }
+        });
+
+        // Toggle the selected submenu and update 'active' class on its button
+        if (submenu.style.display === "none" || submenu.style.display === "") {
+          submenu.style.display = "block";
+          submenuBtn.classList.add("active");
+        } else {
+          submenu.style.display = "none";
+          submenuBtn.classList.remove("active");
+        }
+      }
+    </script>
+  </body>
+</html>

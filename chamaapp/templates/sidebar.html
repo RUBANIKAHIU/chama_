@@ -1,0 +1,102 @@
+
+<nav class="sidebar">
+    <div class="sidebar-heading">Sidebar Menu</div>
+    <ul>
+      <li>
+        <button
+          class="submenu-btn"
+          onclick="toggleSubMenu('overviewSubMenu')"
+          id="overviewSubMenuBtn"
+        >
+          Overview
+        </button>
+        <ul class="submenu" id="overviewSubMenu">
+          <li><a href="#">Total Funds</a></li>
+          <li><a href="#">Transactions</a></li>
+          <li><a href="#">Upcoming Events</a></li>
+        </ul>
+      </li>
+      <li>
+        <button
+          class="submenu-btn"
+          onclick="toggleSubMenu('memberManagementSubMenu')"
+          id="memberManagementSubMenuBtn"
+        >
+          Member Management
+        </button>
+        <ul class="submenu" id="memberManagementSubMenu">
+          <li>
+            <button
+              class="submenu-btn"
+              onclick="toggleSubMenu('manageMembersSubMenu')"
+              id="manageMembersSubMenuBtn"
+            >
+              Manage Members
+            </button>
+            <ul class="submenu" id="manageMembersSubMenu">
+              <li><a href="#">Add Member</a></li>
+              <li><a href="#">Update Member</a></li>
+              <li><a href="#">Remove Members</a></li>
+            </ul>
+          </li>
+          <li><a href="#">List Of Members</a></li>
+        </ul>
+      </li>
+      <li>
+        <button
+          class="submenu-btn"
+          onclick="toggleSubMenu('meetingScheduleSubMenu')"
+          id="meetingScheduleSubMenuBtn"
+        >
+          Meeting Schedule
+        </button>
+        <ul class="submenu" id="meetingScheduleSubMenu">
+          <li><a href="#">Calendar (Chama Meetings)</a></li>
+          <li><a href="#">Mark Attendance</a></li>
+        </ul>
+      </li>
+      <li>
+        <button
+          class="submenu-btn"
+          onclick="toggleSubMenu('communicationHubSubMenu')"
+          id="communicationHubSubMenuBtn"
+        >
+          Communication Hub
+        </button>
+        <ul class="submenu" id="communicationHubSubMenu">
+          <li><a href="#">Latest Announcements</a></li>
+          <li><a href="#">Ask Questions</a></li>
+        </ul>
+      </li>
+      <li>
+        <button
+          class="submenu-btn"
+          onclick="toggleSubMenu('financialOverviewSubMenu')"
+          id="financialOverviewSubMenuBtn"
+        >
+          Financial Overview
+        </button>
+        <ul class="submenu" id="financialOverviewSubMenu">
+          <li><a href="#">Outstanding Loans</a></li>
+          <li><a href="#">Upcoming Expenses</a></li>
+          <li><a href="#">Financial Report</a></li>
+        </ul>
+      </li>
+      <li>
+        <button
+          class="submenu-btn"
+          onclick="toggleSubMenu('taskManagementSubMenu')"
+          id="taskManagementSubMenuBtn"
+        >
+          Task Management
+        </button>
+        <ul class="submenu" id="taskManagementSubMenu">
+          <li><a href="#">Assign Task</a></li>
+          <li><a href="#">Track Progress</a></li>
+        </ul>
+      </li>
+      <li><a href="#">Payment Status</a></li>
+      <li><a href="#">User Settings</a></li>
+      <li><a href="#">Logout</a></li>
+    </ul>
+  </nav>

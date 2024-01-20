@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Include Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+    />
+    <link rel="stylesheet" href="../static/signup.css" />
+    <title>Chama Signup</title>
+    <style>
+      /* Add your custom styles here */
+      .password-container {
+        position: relative;
+      }
+
+      .toggle-password {
+        position: absolute;
+        top: 50%;
+        right: 10px;
+        cursor: pointer;
+        transform: translateY(-50%);
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="signup-container">
+      <h2 class="text-center">Chama Signup</h2>
+      <form id="signup-form" onsubmit="return validatePassword()">
+        <div class="form-group">
+          <label for="fname">First Name:</label>
+          <input
+            type="text"
+            id="fname"
+            name="fname"
+            placeholder="first name"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="lname">Last Name:</label>
+          <input
+            type="text"
+            id="lname"
+            name="lname"
+            placeholder="last name"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="phone">Phone Number:</label>
+          <input
+            type="tel"
+            id="phone"
+            name="phone"
+            placeholder="(+245)721111111"
+            required
+          />
+        </div>
+        <div>
+          <label for="email">Email:</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="chumz@gmail.com"
+            required
+          />
+        </div>
+        <br />
+        <b style="font-size: medium">Gender :</b>
+        <br />
+        <div class="form-group" style="display: flex">
+          <label for="male">Male</label>
+          <input type="radio" id="male" name="gender" value="male" required />
+
+          <label for="female">Female</label>
+          <input
+            type="radio"
+            id="female"
+            name="gender"
+            value="female"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="dob">Date Of Birth:</label>
+          <input
+            type="date"
+            id="dob"
+            name="dob"
+            placeholder="Date Of Birth"
+            required
+          />
+        </div>
+        <div>
+          <label for="password">Password:</label>
+          <div class="password-container">
+            <input
+              type="password"
+              name="password"
+              id="password"
+              placeholder="Password"
+              required
+            />
+            <span class="toggle-password" onclick="togglePassword('password')"
+              ><i class="fas fa-eye"></i
+            ></span>
+          </div>
+        </div>
+        <br />
+        <div>
+          <label for="confirm_password">Confirm Password:</label>
+          <div class="password-container">
+            <input
+              type="password"
+              name="confirm_password"
+              id="confirm_password"
+              placeholder="Confirm Password"
+              required
+            />
+            <span
+              class="toggle-password"
+              onclick="togglePassword('confirm_password')"
+              ><i class="fas fa-eye"></i
+            ></span>
+          </div>
+        </div>
+        <br />
+        <span style="font-size: small">
+          Already have an account? <a href="login.html"> Login</a>
+        </span>
+        <br />
+
+        <div class="submit">
+          <button type="submit">Sign Up</button>
+        </div>
+      </form>
+    </div>
+
+    <script>
+      function togglePassword(inputId) {
+        const passwordInput = document.getElementById(inputId);
+        passwordInput.type =
+          passwordInput.type === "password" ? "text" : "password";
+      }
+
+      function validatePassword() {
+        const password = document.getElementById("password").value;
+        const confirmPassword =
+          document.getElementById("confirm_password").value;
+
+        if (password !== confirmPassword) {
+          alert("Passwords do not match");
+          return false; // Prevent form submission
+        }
+
+        // Continue with form submission or other actions
+        return true;
+      }
+
+      document.getElementById("phone").addEventListener("input", function (e) {
+        const phoneNumber = e.target.value.replace(/\D/g, ""); // Remove non-numeric characters
+        const formattedPhoneNumber = `(+${phoneNumber.slice(
+          0,
+          3
+        )})${phoneNumber.slice(3, 13)}`;
+        e.target.value = formattedPhoneNumber;
+      });
+    </script>
+  </body>
+</html>
