@@ -30,6 +30,7 @@
     <div class="signup-container">
       <h2 class="text-center">Chama Signup</h2>
       <form method="post" id="signup-form" onsubmit="return validatePassword()">
+        {% csrf_token %}
         <div class="form-group">
           <label for="fname">First Name:</label>
           <input
@@ -56,9 +57,10 @@
             type="tel"
             id="phone"
             name="phone"
-            placeholder="(+245)721111111"
+            placeholder="245721111111"
             required
           />
+          <small style="color: red">{{phone_numberError}}</small>
         </div>
         <div>
           <label for="email">Email:</label>
@@ -69,6 +71,7 @@
             placeholder="chumz@gmail.com"
             required
           />
+          <small style="color: red">{{emailError}}</small>
         </div>
         <br />
         <b style="font-size: medium">Gender :</b>
@@ -132,7 +135,8 @@
         </div>
         <br />
         <span style="font-size: small">
-          Already have an account? <a href="login.html"> Login</a>
+          Already have an account?
+          <a href="http://127.0.0.1:8000/user_login/"> Login</a>
         </span>
         <br />
 
@@ -165,10 +169,10 @@
 
       document.getElementById("phone").addEventListener("input", function (e) {
         const phoneNumber = e.target.value.replace(/\D/g, ""); // Remove non-numeric characters
-        const formattedPhoneNumber = `(+${phoneNumber.slice(
+        const formattedPhoneNumber = `${phoneNumber.slice(
           0,
           3
-        )})${phoneNumber.slice(3, 13)}`;
+        )}${phoneNumber.slice(3, 13)}`;
         e.target.value = formattedPhoneNumber;
       });
     </script>

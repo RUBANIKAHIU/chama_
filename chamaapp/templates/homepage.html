@@ -9,9 +9,12 @@
   <body>
     <div class="dashboard">
       <h1>Chama Dashboard</h1>
+      <div class="deposit-withdraw-buttons">
+        <button onclick="openDepositForm()">Deposit</button>
+        <button onclick="openWithdrawForm()">Withdraw</button>
+      </div>
     </div>
     <div class="container">
-      
       <nav class="sidebar">
         <div class="sidebar-heading">Sidebar Menu</div>
         <ul>
@@ -24,7 +27,9 @@
               Overview
             </button>
             <ul class="submenu" id="overviewSubMenu">
-              <li><a href="#">Total Funds</a></li>
+              <li>
+                <a href="http://127.0.0.1:8000/totalfunds/">Total Funds</a>
+              </li>
               <li><a href="#">Transactions</a></li>
               <li><a href="#">Upcoming Events</a></li>
             </ul>
@@ -52,7 +57,9 @@
                   <li><a href="#">Remove Members</a></li>
                 </ul>
               </li>
-              <li><a href="#">List Of Members</a></li>
+              <li>
+                <a href="http://127.0.0.1:8000/members_list/">List Of Members</a>
+              </li>
             </ul>
           </li>
           <li>
@@ -114,7 +121,6 @@
         </ul>
       </nav>
 
-
       <div class="main-bar">
         <div class="main-bar-heading">Main Content Area</div>
       </div>
@@ -126,7 +132,6 @@
         var allSubmenus = document.querySelectorAll(".submenu");
         var allSubmenuBtns = document.querySelectorAll(".submenu-btn");
 
-        // Close all other submenus and remove 'active' class from their buttons
         allSubmenus.forEach((item) => {
           if (item.id !== subMenuId && !item.contains(submenuBtn)) {
             item.style.display = "none";
@@ -139,7 +144,6 @@
           }
         });
 
-        // Toggle the selected submenu and update 'active' class on its button
         if (submenu.style.display === "none" || submenu.style.display === "") {
           submenu.style.display = "block";
           submenuBtn.classList.add("active");
@@ -148,6 +152,18 @@
           submenuBtn.classList.remove("active");
         }
       }
+
+      function openDepositForm() {
+        // Implement logic to show deposit form or perform necessary actions
+        alert("Deposit form will be shown here.");
+      }
+
+      function openWithdrawForm() {
+        // Implement logic to show withdraw form or perform necessary actions
+        alert("Withdraw form will be shown here.");
+      }
     </script>
+  </body>
+</html>
   </body>
 </html>
