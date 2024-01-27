@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../static/upcoming_events.css" />
+    <title>Upcoming Events</title>
+  </head>
+  <body>
+    <header>
+      <h1>Upcoming Events</h1>
+    </header>
+    <table>
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Description</th>
+          <th>Date</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for event in events %}
+        <tr>
+          <td>{{ event.meetingTitle }}</td>
+          <td>{{ event.meetingDescription }}</td>
+          <td>{{ event.meetingDate }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </body>
+</html>

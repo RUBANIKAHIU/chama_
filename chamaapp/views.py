@@ -15,10 +15,11 @@ from rest_framework.permissions import AllowAny
 from rest_framework.decorators import action
 
 
+
 from django.contrib.auth.models import User
 
 #importing my models
-from .models import Profile,Members
+from .models import Profile,Members,Meeting
 
 
 
@@ -29,6 +30,8 @@ class DummySerializer(serializers.Serializer):
 class chamaviewset(viewsets.ModelViewSet): 
     permission_classes = (AllowAny,)
     serializer_class = DummySerializer
+
+    
 
 # Render signup.html
     @action(detail=False, methods= ['get','post'])
@@ -41,6 +44,7 @@ class chamaviewset(viewsets.ModelViewSet):
             gender= request.POST.get('gender')
             date_of_birth= request.POST.get('dob')
             password= request.POST.get('password')
+
 
             
              # Check if phone number already exists
@@ -73,11 +77,22 @@ class chamaviewset(viewsets.ModelViewSet):
                         date_of_birth=date_of_birth
                     )
 
+                    #create Members Profile in chamaapp
+                    members=Members.objects.create(
+
+                        profile=profile,
+                        phone_number=phone_number,
+                        email=email
+
+
+                    )
+
 
 
 
                     # Redirect to success page or perform other actions
                     profile.save() 
+                    members.save()
                     return redirect('http://127.0.0.1:8000/user_login/')
             
             except IntegrityError as e:
@@ -124,14 +139,54 @@ class chamaviewset(viewsets.ModelViewSet):
     @action(detail=False, methods= ['get','post'])
     def members_list(self,request):
         members = Members.objects.select_related('profile').all()
-        return render(request, 'listofmembers.html',  {'members': members})
-
-        
-
-
+        return render(request, 'listofmembers.html',  {'list_members': members})
     
 
 
+#render calendar with meetings
+    @action(detail=False, methods= ['get','post'])    
+    def meetings(self, request):
+        if request.method == 'GET':
+            # Fetch all meetings
+            meetings = Meeting.objects.all()
+            return render(request, 'calendar.html', {'meetings': meetings})
+              
+
+        print('hello meet') 
+        if request.method == 'POST':
+            meetingTitle = request.POST.get('meetingTitle')
+            meetingDescription = request.POST.get('meetingDescription')
+            meetingDate = request.POST.get('meetingDate')
+
+            print(meetingTitle)
+
+            # Assuming you have a Meeting model in your app
+            new_meeting =Meeting.objects.create(
+                meetingTitle=meetingTitle,
+                meetingDescription=meetingDescription,
+                meetingDate=meetingDate
+            )
+
+            new_meeting.save()
+            print('hello meet2')
 
 
- 
+            # Fetch all meetings after creating a new one
+            meetings = Meeting.objects.all()
+
+            print(meetings)
+            
+    
+            return render(request, 'calendar.html', {'events': meetings})
+        
+    print('hellomeet3')
+
+
+# render upcoming events
+    
+    @action(detail=False, methods= ['get','post'])
+    def upcoming_events(self,request):
+            meetings = Meeting.objects.all()
+            return render(request, 'upcoming_events.html', {'events': meetings})
+
+     

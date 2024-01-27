@@ -57,7 +57,8 @@
             type="tel"
             id="phone"
             name="phone"
-            placeholder="245721111111"
+            placeholder="Enter Phone Number"
+            minlength="12"
             required
           />
           <small style="color: red">{{phone_numberError}}</small>
@@ -172,7 +173,7 @@
         const formattedPhoneNumber = `${phoneNumber.slice(
           0,
           3
-        )}${phoneNumber.slice(3, 13)}`;
+        )}${phoneNumber.slice(3, 12)}`;
         e.target.value = formattedPhoneNumber;
       });
     </script>

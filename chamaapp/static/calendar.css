@@ -1,0 +1,116 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    background-image: url(https://imgs.search.brave.com/jdZYuQXmcWm5UfaqEbQdHyuMDmB2upyxoedeg1JpSDA/rs:fit:500:0:0/g:ce/aHR0cHM6Ly9pbWFn/ZXMudW5zcGxhc2gu/Y29tL3Bob3RvLTE1/NjA0MjAwMjUtOTQ1/M2YwMmI0NzUxP3E9/ODAmdz0xMDAwJmF1/dG89Zm9ybWF0JmZp/dD1jcm9wJml4bGli/PXJiLTQuMC4zJml4/aWQ9TTN3eE1qQTNm/REI4TUh4elpXRnlZ/Mmg4T0h4OFkyRnNa/VzVrWVhKOFpXNThN/SHg4TUh4OGZEQT0.jpeg);
+}
+
+#calendar-container {
+    max-width: 800px;
+    margin: 30px auto;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+#calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #3498db;
+    color: #fff;
+    padding: 15px;
+    border-radius: 8px 8px 0 0;
+}
+
+#calendar-header h1 {
+    margin: 0;
+    font-size: 1.5em;
+}
+
+#calendar {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 1px;
+    border-top: 1px solid #ddd;
+    border-left: 1px solid #ddd;
+}
+
+.day {
+    border: 1px solid #ddd;
+    padding: 10px;
+    position: relative;
+    cursor: pointer;
+    min-height: 100px;
+}
+
+.day:hover {
+    background-color: #f2f2f2;
+}
+
+.meeting {
+    background-color: #e74c3c;
+    color: #fff;
+    padding: 5px;
+    margin-bottom: 5px;
+    border-radius: 3px;
+    cursor: pointer;
+    position: relative;
+}
+
+.meeting:hover {
+    background-color: #c0392b;
+}
+
+.meeting span {
+    display: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+    cursor: pointer;
+    padding: 3px;
+}
+
+.meeting:hover span {
+    display: block;
+    background-color: #fff;
+    color: #e74c3c;
+    border: 1px solid #e74c3c;
+    border-radius: 50%;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 10% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 50%;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}

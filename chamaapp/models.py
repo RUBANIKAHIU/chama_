@@ -29,3 +29,12 @@ class Members(models.Model):
     def __str__(self):
         return str(self.phone_number)
 
+class Meeting(models.Model):
+    meetingTitle = models.CharField(max_length=50, null=True, blank=False )
+    meetingDate = models.DateField(null=True, blank=False)
+    meetingDescription = models.TextField(null=True, blank=True)
+
+    def __str__(self):
+        return self.meetingTitle or 'Untitled Meeting'
+    
+
